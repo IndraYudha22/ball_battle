@@ -7,3 +7,9 @@ public enum Fractions
     player,
     enemy
 }
+
+public enum ModePlayer
+{
+    attacker,
+    defender
+}

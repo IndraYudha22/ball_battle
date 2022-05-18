@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -7,35 +8,34 @@ namespace UI.PlayerInfo
 {
     public partial class UI_PlayerInfo
     {
-        [Header("Properties Energy")]
+        [Header("ENERGY")]
         [SerializeField] private List<EnergyPart> energyPart;
         [SerializeField] private SO_ColorFraction colorFraction;
         private float energyFill = 0;
 
-        private void SetFraction()
+        public float GetCurrentEnergy(Fractions fractions)
         {
-            if (fractions == Fractions.player)
+            if (fractions == this.fractions)
             {
-
+                return energyFill;
             }
-            else
-            {
-
-            }
+            return -1;
         }
 
-        private void DecreaseEnergy(Fractions fractions)
+        public void DecreaseEnergy(Fractions fractions, float value)
         {
-            if (fractions == this.fractions){
-                energyFill--;
+            if (fractions == this.fractions)
+            {
+                Debug.Log($"DECREASE: {value}");
+                energyFill -= value;
             }
         }
 
         private void RefillEnergy()
         {
-            if (energyFill < GameManager.Instance.maxEnergyBar)
+            if (energyFill < Parameters.maxEnergyBar)
             {
-                energyFill += GameManager.Instance.energyRegeneration * Time.deltaTime;
+                energyFill += Parameters.energyRegeneration * Time.deltaTime;
 
                 int _part = (int)energyFill;
                 float _energyFill = energyFill - _part;
@@ -46,7 +46,7 @@ namespace UI.PlayerInfo
                     _energyPart.SetValueEnergy(fractions, 1);
                 }
 
-                if (energyFill >= GameManager.Instance.maxEnergyBar) return;
+                if (energyFill >= Parameters.maxEnergyBar) return;
 
                 for (int i = _part; i < energyPart.Count; i++)
                 {
@@ -54,7 +54,6 @@ namespace UI.PlayerInfo
                     _energyPart.SetValueEnergy(fractions, 0);
                 }
 
-                Debug.Log($"ENERGY FILL : {_energyFill}");
                 energyPart[_part].SetValueEnergy(fractions, _energyFill);
 
             }

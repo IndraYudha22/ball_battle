@@ -29,5 +29,49 @@ public static class Parameters
 
     public static float maxPartEnergy = 1f;
 
-    // public static Color
+    private static PlayerCondition SetModeAttacker()
+    {
+        PlayerCondition playerCondition = new PlayerCondition();
+        playerCondition.modePlayer = ModePlayer.attacker;
+        playerCondition.energyRegeneration = energyRegeneration;
+        playerCondition.energyCost = energyCostAttacker;
+        playerCondition.spawnTime = spawnTimeAttacker;
+        return playerCondition;
+    }
+
+    private static PlayerCondition SetModeDefender()
+    {
+        PlayerCondition playerCondition = new PlayerCondition();
+        playerCondition.modePlayer = ModePlayer.defender;
+        playerCondition.energyRegeneration = energyRegeneration;
+        playerCondition.energyCost = energyCostDefender;
+        playerCondition.spawnTime = spawnTimerDefender;
+        return playerCondition;
+    }
+
+    public static PlayerCondition GetPlayerCondition(ModePlayer modePlayer)
+    {
+        if (modePlayer == ModePlayer.attacker)
+        {
+            if (GameManager.Instance.matchRound % 2 == 1)
+            {
+                return SetModeAttacker();
+            }
+            else
+            {
+                return SetModeDefender();
+            }
+        }
+        else
+        {
+            if (GameManager.Instance.matchRound % 2 == 1)
+            {
+                return SetModeDefender();
+            }
+            else
+            {
+                return SetModeAttacker();
+            }
+        }
+    }
 }

@@ -6,24 +6,22 @@ using TMPro;
 
 namespace UI.PlayerInfo
 {
-    public partial class UI_PlayerInfo : MonoBehaviour
+    public partial class UI_PlayerInfo : StaticInstance<UI_PlayerInfo>
     {
+        [Header("PLAYER INFO")]
         [SerializeField] private Fractions fractions;
         [SerializeField] private string playerInfoName;
 
         [SerializeField] private TextMeshProUGUI textInformation;
 
-        private void Awake()
+        protected override void Awake()
         {
+            base.Awake();
             textInformation.text = $"{textInformation.text}";
         }
 
         private void Update()
         {
-            if (Input.GetKeyDown(KeyCode.A))
-            {
-                DecreaseEnergy(Fractions.player);
-            }
             RefillEnergy();
         }
     }

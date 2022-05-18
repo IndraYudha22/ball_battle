@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "ColorFaction", menuName = "ScriptableObject/Colors/Color Faction")]
+[CreateAssetMenu(fileName = "ColorFraction", menuName = "ScriptableObject/Colors/Color Fraction")]
 public class SO_ColorFraction : ScriptableObject
 {
     [SerializeField] private Color colorPlayer;

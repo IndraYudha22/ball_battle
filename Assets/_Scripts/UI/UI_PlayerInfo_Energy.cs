@@ -8,52 +8,55 @@ namespace UI.PlayerInfo
     public partial class UI_PlayerInfo
     {
         [Header("Properties Energy")]
-        [SerializeField] private List<GameObject> energyPart;
+        [SerializeField] private List<EnergyPart> energyPart;
         [SerializeField] private SO_ColorFraction colorFraction;
-        private int energyPoint = 0;
         private float energyFill = 0;
 
-        private void InitialEnergy()
+        private void SetFraction()
         {
-            // foreach (Slider part in energyPart)
-            // {
-            //     part.minValue = 0;
-            //     part.maxValue = GameManager.Instance.maxPartEnergy;
-            // }
+            if (fractions == Fractions.player)
+            {
+
+            }
+            else
+            {
+
+            }
         }
 
-        private void ColorRefillEnergy(int pos)
+        private void DecreaseEnergy(Fractions fractions)
         {
-            var part = energyPart[pos].GetComponent<Image>();
-
-            if (part.fillAmount < GameManager.Instance.maxPartEnergy)
-            {
-                part.color = colorFraction.SetColor(fractions, .5f);
-            }
-            else if (part.fillAmount >= GameManager.Instance.maxPartEnergy)
-            {
-                part.color = colorFraction.SetColor(fractions, 1f);
+            if (fractions == this.fractions){
+                energyFill--;
             }
         }
 
         private void RefillEnergy()
         {
-            if (energyPoint <= GameManager.Instance.maxPartEnergy)
+            if (energyFill < GameManager.Instance.maxEnergyBar)
             {
-                var part = energyPart[energyPoint].GetComponent<Image>();
+                energyFill += GameManager.Instance.energyRegeneration * Time.deltaTime;
 
+                int _part = (int)energyFill;
+                float _energyFill = energyFill - _part;
 
-                if (part.fillAmount < GameManager.Instance.maxPartEnergy)
+                for (int i = 0; i < _part; i++)
                 {
-                    energyFill += GameManager.Instance.energyRegeneration * Time.deltaTime;
-                    ColorRefillEnergy(energyPoint);
+                    EnergyPart _energyPart = energyPart[i];
+                    _energyPart.SetValueEnergy(fractions, 1);
                 }
-                else if (part.fillAmount >= GameManager.Instance.maxPartEnergy)
+
+                if (energyFill >= GameManager.Instance.maxEnergyBar) return;
+
+                for (int i = _part; i < energyPart.Count; i++)
                 {
-                    energyFill = GameManager.Instance.maxPartEnergy;
-                    ColorRefillEnergy(energyPoint);
-                    energyPoint++;
+                    EnergyPart _energyPart = energyPart[i];
+                    _energyPart.SetValueEnergy(fractions, 0);
                 }
+
+                Debug.Log($"ENERGY FILL : {_energyFill}");
+                energyPart[_part].SetValueEnergy(fractions, _energyFill);
+
             }
         }
     }

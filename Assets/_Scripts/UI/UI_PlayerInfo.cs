@@ -12,12 +12,19 @@ namespace UI.PlayerInfo
         [SerializeField] private string playerInfoName;
 
         [SerializeField] private TextMeshProUGUI textInformation;
-        // [SerializeField] private Transform energyBar;
-
-        // private List<Slider> energyPart;
 
         private void Awake()
         {
+            textInformation.text = $"{textInformation.text}";
+        }
+
+        private void Update()
+        {
+            if (Input.GetKeyDown(KeyCode.A))
+            {
+                DecreaseEnergy(Fractions.player);
+            }
+            RefillEnergy();
         }
     }
 }

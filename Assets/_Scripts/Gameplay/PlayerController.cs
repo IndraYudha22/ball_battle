@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UI.PlayerInfo;
 
-public class PlayerController : Singleton<PlayerController>
+public class PlayerController : StaticInstance<PlayerController>
 {
     private string PlayerField = Parameters.PlayerField;
     private string EnemyField = Parameters.EnemyField;

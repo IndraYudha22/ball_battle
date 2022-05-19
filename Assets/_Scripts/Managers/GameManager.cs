@@ -13,6 +13,9 @@ public partial class GameManager : StaticInstance<GameManager>
     private PlayerCondition player;
     private PlayerCondition enemy;
 
+    public delegate void StatusPlayer();
+
+
     protected override void Awake()
     {
         base.Awake();
@@ -27,9 +30,6 @@ public partial class GameManager : StaticInstance<GameManager>
         EnemyClick();
 
         Draw(); // set draw condition
-
-
-
     }
 
     private void Update()

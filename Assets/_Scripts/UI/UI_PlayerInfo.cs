@@ -11,18 +11,40 @@ namespace UI.PlayerInfo
         [Header("PLAYER INFO")]
         [SerializeField] private Fractions fractions;
         [SerializeField] private string playerInfoName;
-
         [SerializeField] private TextMeshProUGUI textInformation;
+
+        private PlayerCondition player;
+        private PlayerCondition enemy;
 
         protected override void Awake()
         {
             base.Awake();
-            textInformation.text = $"{textInformation.text}";
+        }
+
+        private void Start()
+        {
+            this.textInformation.text = $"{this.playerInfoName} ({InfoStatus(this.fractions)})";
         }
 
         private void Update()
         {
             RefillEnergy();
+        }
+
+        private string InfoStatus(Fractions fractions)
+        {
+            player = Parameters.GetPlayerCondition(ModePlayer.attacker);
+            enemy = Parameters.GetPlayerCondition(ModePlayer.defender);
+
+            if (fractions == Fractions.player)
+            {
+                return player.status;
+            }
+            else
+            {
+                return enemy.status;
+            }
+
         }
     }
 }

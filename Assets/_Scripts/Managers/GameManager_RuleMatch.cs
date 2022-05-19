@@ -6,7 +6,7 @@ using UI.Timer;
 public partial class GameManager
 {
     [Header("RULE MATCH")]
-    [HideInInspector] public float matchRound = 1;
+    public float matchRound = 1;
     private int playerPoint;
     private int enemyPoint;
 

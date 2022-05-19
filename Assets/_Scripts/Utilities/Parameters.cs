@@ -32,6 +32,9 @@ public static class Parameters
     public static string PlayerField = "player_field";
     public static string EnemyField = "enemy_field";
 
+    public static string statusAttacker = "Attacker";
+    public static string statusDefender = "Defender";
+
     private static PlayerCondition SetModeAttacker()
     {
         PlayerCondition playerCondition = new PlayerCondition();
@@ -39,6 +42,7 @@ public static class Parameters
         playerCondition.energyRegeneration = energyRegeneration;
         playerCondition.energyCost = energyCostAttacker;
         playerCondition.spawnTime = spawnTimeAttacker;
+        playerCondition.status = statusAttacker;
         return playerCondition;
     }
 
@@ -49,6 +53,7 @@ public static class Parameters
         playerCondition.energyRegeneration = energyRegeneration;
         playerCondition.energyCost = energyCostDefender;
         playerCondition.spawnTime = spawnTimerDefender;
+        playerCondition.status = statusDefender;
         return playerCondition;
     }
 

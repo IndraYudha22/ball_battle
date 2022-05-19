@@ -9,6 +9,7 @@ public class PlayerCondition
     public float energyRegeneration;
     public float energyCost;
     public float spawnTime;
+    public string status;
 }
 
 

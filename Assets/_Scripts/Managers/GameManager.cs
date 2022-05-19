@@ -2,11 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UI.PlayerInfo;
+using UI.Timer;
 
-public class GameManager : Singleton<GameManager>
+public partial class GameManager : StaticInstance<GameManager>
 {
-    public float matchRound = 1;
-
+    [Header("GAME MANAGER")]
     public UI_PlayerInfo playerInfo;
     public UI_PlayerInfo enemyInfo;
 
@@ -22,8 +22,22 @@ public class GameManager : Singleton<GameManager>
     {
         player = Parameters.GetPlayerCondition(ModePlayer.attacker);
         enemy = Parameters.GetPlayerCondition(ModePlayer.defender);
+
         PlayerClick();
         EnemyClick();
+
+        Draw(); // set draw condition
+
+
+
+    }
+
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.S))
+        {
+            RandomBall(); // set random ball
+        }
     }
 
     public void PlayerClick()
@@ -58,18 +72,5 @@ public class GameManager : Singleton<GameManager>
         };
     }
 
-    public void ModeAttacker(float value)
-    {
 
-    }
-
-    public void ModeDefender()
-    {
-
-    }
-
-    public void Round()
-    {
-
-    }
 }

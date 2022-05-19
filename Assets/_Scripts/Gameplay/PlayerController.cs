@@ -5,8 +5,8 @@ using UI.PlayerInfo;
 
 public class PlayerController : Singleton<PlayerController>
 {
-    private string PlayerField = "player_field";
-    private string EnemyField = "enemy_field";
+    private string PlayerField = Parameters.PlayerField;
+    private string EnemyField = Parameters.EnemyField;
 
     public delegate void DelegateOnClickPlayer();
     public DelegateOnClickPlayer delegateOnClickPlayer;
@@ -41,26 +41,7 @@ public class PlayerController : Singleton<PlayerController>
 
     private void OnClick()
     {
-        // #if UNITY_ANDROID
-        // Touch[] touches = Input.touches;
-
-        // if (touches.Length > 0)
-        // {
-        //     Touch touch = touches[0];
-        //     if (touch.phase == TouchPhase.Ended)
-        //     {
-        //         ClickHandler(touch.position);
-        //     }
-        // }
-        // #endif
-
-        // #if UNITY_STANDALONE_WIN
-        // if (Input.GetMouseButtonDown(0))
-        // {
-        //     ClickHandler(Input.mousePosition);
-        // }
-        // #endif
-
+        #if UNITY_ANDROID
         Touch[] touches = Input.touches;
 
         if (touches.Length > 0)
@@ -71,10 +52,13 @@ public class PlayerController : Singleton<PlayerController>
                 ClickHandler(touch.position);
             }
         }
+        #endif
 
+        #if UNITY_STANDALONE_WIN
         if (Input.GetMouseButtonDown(0))
         {
             ClickHandler(Input.mousePosition);
         }
+        #endif
     }
 }

@@ -4,7 +4,7 @@ using UnityEngine;
 
 public static class Parameters
 {
-    public static int matchPerGame = 5;
+    public static int roundGame = 5;
     public static float timeLimit = 140f;
     public static float maxEnergyBar = 6f;
 
@@ -28,6 +28,9 @@ public static class Parameters
     public static float detectionRange = 35f;
 
     public static float maxPartEnergy = 1f;
+
+    public static string PlayerField = "player_field";
+    public static string EnemyField = "enemy_field";
 
     private static PlayerCondition SetModeAttacker()
     {

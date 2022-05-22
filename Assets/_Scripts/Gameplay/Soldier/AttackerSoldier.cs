@@ -65,6 +65,7 @@ public class AttackerSoldier : Soldier
         {
             if (GameManager.Instance.ballHolder == null)
             {
+                animator.Play("running");
                 SetKinematic(true);
                 transform.position = Vector3.MoveTowards(transform.position, ball.transform.position, Parameters.normalSpeedAttacker * Time.deltaTime);
                 if (Vector3.Distance(transform.position, ball.transform.position) <= 0)
@@ -92,6 +93,7 @@ public class AttackerSoldier : Soldier
 
                     GameManager.Instance.ballHolder = null;
 
+                    animator.Play("pass");
                     indicatorHoldingBall.SetActive(false);
                     SetStatusSoldier(false);
 
@@ -104,6 +106,7 @@ public class AttackerSoldier : Soldier
                 }
                 else
                 {
+                    animator.Play("running");
                     indicatorHoldingBall.SetActive(true);
                     SetKinematic(false);
                     transform.position = Vector3.MoveTowards(transform.position, gatePosition, Parameters.carryingSpeed * Time.deltaTime);
@@ -111,6 +114,7 @@ public class AttackerSoldier : Soldier
             }
             else
             {
+                animator.Play("running");
                 SetKinematic(true);
                 transform.position = Vector3.MoveTowards(transform.position, new Vector3(transform.position.x, gatePosition.y, gatePosition.z), Parameters.normalSpeedAttacker * Time.deltaTime);
 

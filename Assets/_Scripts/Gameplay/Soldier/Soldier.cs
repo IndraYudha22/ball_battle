@@ -10,6 +10,7 @@ public class Soldier : MonoBehaviour
     [SerializeField] private SkinnedMeshRenderer meshRenderer;
     [SerializeField] private SO_ColorFraction colorFraction;
     [SerializeField] private GameObject indicatorArrow;
+    public Animator animator;
 
     public Vector3 originPosition;
     public Vector3 lastPosition;

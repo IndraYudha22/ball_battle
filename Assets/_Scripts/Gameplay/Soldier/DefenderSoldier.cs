@@ -47,12 +47,14 @@ public class DefenderSoldier : Soldier
         {
             if (target != null)
             {
+                animator.Play("running");
                 transform.position = Vector3.MoveTowards(transform.position, target.transform.position, Parameters.normalSpeedDefender * Time.deltaTime);
 
                 indicatorArea.SetActive(false);
 
                 if (caughtTarget)
                 {
+                    animator.Play("idle");
                     SetStatusSoldier(false);
                     SetKinematic(true);
                     StartCoroutine(ReactivateSoldier());
@@ -71,6 +73,7 @@ public class DefenderSoldier : Soldier
 
         if (returningToPosition)
         {
+            animator.Play("running");
             transform.position = Vector3.MoveTowards(transform.position, originPosition, Parameters.returnSpeed * Time.deltaTime);
             if (transform.position == originPosition)
             {

@@ -6,6 +6,10 @@ TagManager:
   tags:
   - player_field
   - enemy_field
+  - atk_soldier
+  - dfn_soldier
+  - fance
+  - gate
   layers:
   - Default
   - TransparentFX

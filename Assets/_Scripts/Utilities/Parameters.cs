@@ -14,10 +14,10 @@ public static class Parameters
     public static float energyCostDefender = 3;
 
     public static float spawnTimeAttacker = .5f;
-    public static float spawnTimerDefender = .5f;
+    public static float spawnTimeDefender = .5f;
 
-    public static float reactiveTimeAttacker = 2.5f;
-    public static float reactiveTimerDefender = 4f;
+    public static float reactivateTimeAttacker = 2.5f;
+    public static float reactivateTimeDefender = 4f;
 
     public static float normalSpeedAttacker = 1.5f;
     public static float normalSpeedDefender = 1f;
@@ -34,6 +34,9 @@ public static class Parameters
 
     public static string statusAttacker = "Attacker";
     public static string statusDefender = "Defender";
+
+    public static bool startTimer = true;
+    public static bool fillEnergy = true;
 
     private static PlayerCondition SetModeAttacker()
     {
@@ -52,7 +55,7 @@ public static class Parameters
         playerCondition.modePlayer = ModePlayer.defender;
         playerCondition.energyRegeneration = energyRegeneration;
         playerCondition.energyCost = energyCostDefender;
-        playerCondition.spawnTime = spawnTimerDefender;
+        playerCondition.spawnTime = spawnTimeDefender;
         playerCondition.status = statusDefender;
         return playerCondition;
     }

@@ -12,5 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b2bf2101f2bd58f47be855f96c3c58d4, type: 3}
   m_Name: ColorFraction
   m_EditorClassIdentifier: 
-  colorPlayer: {r: 0.8867924, g: 0.16313636, b: 0.16313636, a: 1}
-  colorEnemy: {r: 0.11774653, g: 0.83386445, b: 0.9245283, a: 1}
+  colorPlayer: {r: 0.11764706, g: 0.8352941, b: 0.9254902, a: 1}
+  colorEnemy: {r: 0.8862745, g: 0.16470589, b: 0.16470589, a: 1}
+  deactivateSoldier: {r: 0.6132076, g: 0.6132076, b: 0.6132076, a: 1}
+  materialPlayer: {fileID: 2100000, guid: 972f2efb9e14df54e89a47d49b007e79, type: 2}
+  materialEnemy: {fileID: 2100000, guid: a257778f392df4f468be9fff787f2604, type: 2}
+  materialDeactivate: {fileID: 2100000, guid: 0bf11b2fa80472d4dbe5c71b14873433, type: 2}

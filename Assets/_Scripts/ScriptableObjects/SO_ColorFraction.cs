@@ -5,8 +5,20 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "ColorFraction", menuName = "ScriptableObject/Colors/Color Fraction")]
 public class SO_ColorFraction : ScriptableObject
 {
+    [Header("COLOR")]
     [SerializeField] private Color colorPlayer;
     [SerializeField] private Color colorEnemy;
+    [SerializeField] private Color deactivateSoldier;
+
+    [Header("MATERIAL")]
+    [SerializeField] private Material materialPlayer;
+    [SerializeField] private Material materialEnemy;
+    [SerializeField] private Material materialDeactivate;
+
+    public Color SetColorDisable()
+    { 
+        return deactivateSoldier;
+    }
 
     public Color SetColor(Fractions fraction, float transparant = 1f)
     {
@@ -26,29 +38,24 @@ public class SO_ColorFraction : ScriptableObject
         return _color;
     }
 
-    public void SetMaterial(GameObject gameObject, Fractions fraction, float transparant = 1f)
+    public Material SetMaterialDisable()
     {
-        var _color = gameObject.GetComponent<Renderer>().material.color;
-
-        _color = (fraction ==  Fractions.player) ? colorPlayer : colorEnemy;
-        _color.a = transparant;
+        return materialDeactivate;
     }
 
-    public Color GetColorPlayer(){
-        return colorPlayer;
-    }
-
-    public Color GetColorEnemy(){
-        return colorEnemy;
-    }
-
-    public void SetMaterialPlayer(GameObject gameObject)
+    public Material SetMaterial(Fractions fractions)
     {
-        gameObject.GetComponent<Renderer>().material.color = colorPlayer;
-    }
+        Material _material;
 
-    public void SetMaterialEnemy(GameObject gameObject)
-    {
-        gameObject.GetComponent<Renderer>().material.color = colorEnemy;
+        if (fractions == Fractions.player)
+        {
+            _material = materialPlayer;
+        }
+        else
+        {
+            _material = materialEnemy;
+        }
+
+        return _material;
     }
 }

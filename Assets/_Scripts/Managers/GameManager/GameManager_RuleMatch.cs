@@ -22,6 +22,9 @@ public partial class GameManager
         UI_Timer.Instance.onTimer = () =>
         {
             onReset();
+            CalculateMatchTheGame();
+            resultGame?.Invoke(playerPoint, enemyPoint, matchRound, statusWin);
+            matchRound++;
         };
     }
 
@@ -41,7 +44,7 @@ public partial class GameManager
         {
             enemyPoint++;
         }
-        
+
         onReset();
         CalculateMatchTheGame();
         resultGame?.Invoke(playerPoint, enemyPoint, matchRound, statusWin);

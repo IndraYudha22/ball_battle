@@ -12,6 +12,9 @@ public partial class GameManager
 
     public void Exit()
     {
+        Parameters.fillEnergy = true;
+        Parameters.startTimer = true;
+        
         SceneManager.LoadScene(UtilitiesSceneManager.GetScene(SelectScene.main_menu));
     }
 

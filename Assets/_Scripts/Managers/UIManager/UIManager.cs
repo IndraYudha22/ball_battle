@@ -15,6 +15,7 @@ public class UIManager : StaticInstance<UIManager>
             if (canvasView[i].selectCanvas == canvasEnum)
             {
                 canvasView[i].canvasView.SetActive(true);
+
                 for (int j = 0; j < canvasView[i].inactivateCanvases.Count; j++)
                 {
                     canvasView[i].inactivateCanvases[j].SetActive(false);

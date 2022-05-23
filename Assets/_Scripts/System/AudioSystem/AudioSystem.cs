@@ -2,10 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class AudioSystem : MonoBehaviour
+public class AudioSystem : PersistentSingleton<AudioSystem>
 {
-    private void Awake()
-    {
-        DontDestroyOnLoad(this);
-    }
+    
 }

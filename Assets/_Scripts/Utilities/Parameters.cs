@@ -4,6 +4,8 @@ using UnityEngine;
 
 public static class Parameters
 {
+    public static float scalingObject = 1f;
+
     public static int roundGame = 5;
     public static float timeLimit = 140f;
     public static float maxEnergyBar = 6f;
@@ -20,6 +22,7 @@ public static class Parameters
     public static float reactivateTimeDefender = 4f;
 
     public static float normalSpeedAttacker = 1.5f;
+
     public static float normalSpeedDefender = 1f;
 
     public static float carryingSpeed = 0.75f;
@@ -37,6 +40,14 @@ public static class Parameters
 
     public static bool startTimer = true;
     public static bool fillEnergy = true;
+
+    // public static bool playAR = false;
+
+    public static float NormalSpeedAttacker { get => normalSpeedAttacker * scalingObject; }
+    public static float NormalSpeedDefender { get => normalSpeedDefender * scalingObject; }
+    public static float CarryingSpeed { get => carryingSpeed * scalingObject; }
+    public static float BallSpeed { get => ballSpeed * scalingObject; }
+    public static float ReturnSpeed { get => returnSpeed * scalingObject; }
 
     private static PlayerCondition SetModeAttacker()
     {

@@ -18,7 +18,8 @@ public partial class GameManager : StaticInstance<GameManager>
 
     public GameObject gatePlayer;
     public GameObject gateEnemy;
-    
+    public GameObject battleField;
+
     [SerializeField] private GameObject objectUnit;
     public List<AttackerSoldier> listAttackerSoldiers;
     public List<DefenderSoldier> listDefenderSoldiers;
@@ -43,8 +44,14 @@ public partial class GameManager : StaticInstance<GameManager>
         EnemyClick(); // set acontroller condition onEnemy
 
         Draw(); // set draw condition
-        RandomBall(); // random ball first time
 
+        // if (!Parameters.playAR)
+        // {
+        //     RandomBall(); // random ball first time
+        // }
+
+        RandomBall(); // random ball first time
+        
         setPlayerCondition(); // set subscribe from another class
     }
 

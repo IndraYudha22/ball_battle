@@ -48,7 +48,7 @@ public class DefenderSoldier : Soldier
             if (target != null)
             {
                 animator.Play("running");
-                transform.position = Vector3.MoveTowards(transform.position, target.transform.position, Parameters.normalSpeedDefender * Time.deltaTime);
+                transform.position = Vector3.MoveTowards(transform.position, target.transform.position, Parameters.NormalSpeedDefender * Time.deltaTime);
 
                 indicatorArea.SetActive(false);
 
@@ -74,7 +74,7 @@ public class DefenderSoldier : Soldier
         if (returningToPosition)
         {
             animator.Play("running");
-            transform.position = Vector3.MoveTowards(transform.position, originPosition, Parameters.returnSpeed * Time.deltaTime);
+            transform.position = Vector3.MoveTowards(transform.position, originPosition, Parameters.ReturnSpeed * Time.deltaTime);
             if (transform.position == originPosition)
             {
                 returningToPosition = false;

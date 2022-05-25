@@ -26,13 +26,14 @@ public class PlayerController : StaticInstance<PlayerController>
 
         if (Physics.Raycast(ray, out hit))
         {
+            Debug.Log($"HIT : {hit.transform.tag}");
             if (hit.transform.tag == PlayerField)
             {
-                delegateOnClickPlayer(hit);
+                delegateOnClickPlayer?.Invoke(hit);
             }
             else if (hit.transform.tag == EnemyField)
             {
-                delegateOnClickEnemy(hit);
+                delegateOnClickEnemy?.Invoke(hit);
             }
             
         }

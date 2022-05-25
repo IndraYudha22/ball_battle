@@ -9,6 +9,7 @@ public static class UtilitiesSceneManager
     {
         {((int)SelectScene.main_menu), "Main Menu"},
         {((int)SelectScene.gameplay), "Gameplay"},
+        {((int)SelectScene.gameplayAR), "Gameplay_AR"},
     };
 
     public static string GetScene(SelectScene selectScene)

@@ -22,5 +22,5 @@ public enum SelectCanvas
 
 public enum SelectScene
 {
-    main_menu, gameplay
+    main_menu, gameplay, gameplayAR
 }

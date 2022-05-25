@@ -21,7 +21,7 @@ public partial class GameManager
         }
     }
 
-    private void RandomBall()
+    public void RandomBall()
     {
         string tag = SetBattleField();
 

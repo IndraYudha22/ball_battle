@@ -12,8 +12,8 @@ public static class ParametersMenu
         PlayerPrefs.SetInt(statusAR, valueStatus);
     }
 
-    public static void GetPlayerPrefsAR()
+    public static int GetPlayerPrefsAR()
     {
-        PlayerPrefs.GetInt(statusAR);
+        return PlayerPrefs.GetInt(statusAR);
     }
 }

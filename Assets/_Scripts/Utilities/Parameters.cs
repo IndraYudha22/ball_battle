@@ -41,7 +41,7 @@ public static class Parameters
     public static bool startTimer = true;
     public static bool fillEnergy = true;
 
-    public static bool play = false;
+    // public static bool playAR = false;
 
     public static float NormalSpeedAttacker { get => normalSpeedAttacker * scalingObject; }
     public static float NormalSpeedDefender { get => normalSpeedDefender * scalingObject; }

@@ -9,23 +9,20 @@ public class MainMenuManager : StaticInstance<MainMenuManager>
 {
     [SerializeField] private Button btnPlayAR;
 
+
     protected override void Awake()
     {
         base.Awake();
-        EnableGameplayAR();
+        SendRequestPermissionCamera();
     }
 
-    private void EnableGameplayAR()
-    {   
+    private void Update()
+    {
+        if (ParametersMenu.GetPlayerPrefsAR() == 1) return;
         if (Permission.HasUserAuthorizedPermission(Permission.Camera))
         {
-            btnPlayAR.interactable = true; // set enable button play AR
+            btnPlayAR.interactable = true;
             ParametersMenu.SetPlayerPrefsAR(1);
-        }
-        else
-        {
-            btnPlayAR.interactable = false; // set disable button play AR
-            ParametersMenu.SetPlayerPrefsAR(0);
         }
     }
 
@@ -37,6 +34,7 @@ public class MainMenuManager : StaticInstance<MainMenuManager>
     public void PlayGameAR()
     {
         SceneManager.LoadScene(UtilitiesSceneManager.GetScene(SelectScene.gameplayAR));
+        // Parameters.playAR = true;
     }
 
     public void Menu()
@@ -48,4 +46,51 @@ public class MainMenuManager : StaticInstance<MainMenuManager>
     {
         Application.Quit();
     }
+
+    #region PERMISSION
+    internal void PermissionCallbacks_PermissionDeniedAndDontAskAgain(string permissionName)
+    {
+        btnPlayAR.interactable = false;
+        ParametersMenu.SetPlayerPrefsAR(0);
+    }
+
+    internal void PermissionCallbacks_PermissionGranted(string permissionName)
+    {
+        btnPlayAR.interactable = true;
+        ParametersMenu.SetPlayerPrefsAR(1);
+    }
+
+    internal void PermissionCallbacks_PermissionDenied(string permissionName)
+    {
+        btnPlayAR.interactable = false;
+        ParametersMenu.SetPlayerPrefsAR(0);
+    }
+
+    private void SendRequestPermissionCamera()
+    {
+        if (Permission.HasUserAuthorizedPermission(Permission.Camera))
+        {
+            btnPlayAR.interactable = true;
+            ParametersMenu.SetPlayerPrefsAR(1);
+        }
+        else
+        {
+            bool useCallbacks = false;
+            if (!useCallbacks)
+            {
+                Permission.RequestUserPermission(Permission.Camera);
+            }
+            else
+            {
+                var callbacks = new PermissionCallbacks();
+                
+                callbacks.PermissionDenied += PermissionCallbacks_PermissionDenied;
+                callbacks.PermissionGranted += PermissionCallbacks_PermissionGranted;
+                callbacks.PermissionDeniedAndDontAskAgain += PermissionCallbacks_PermissionDeniedAndDontAskAgain;
+
+                Permission.RequestUserPermission(Permission.Camera, callbacks);
+            }
+        }
+    }
+    #endregion
 }

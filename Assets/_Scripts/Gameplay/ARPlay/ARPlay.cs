@@ -11,6 +11,5 @@ public class ARPlay : StaticInstance<ARPlay>
     {
         canvas.SetActive(true);
         gameManager.SetActive(true);
-        Parameters.play = true;
     }
 }

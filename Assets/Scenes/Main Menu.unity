@@ -2131,7 +2131,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8ff414445b5160c4c9cbef075d7aca92, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  btnPlayAR: {fileID: 0}
+  btnPlayAR: {fileID: 923254532}
 --- !u!1 &1921558276
 GameObject:
   m_ObjectHideFlags: 0

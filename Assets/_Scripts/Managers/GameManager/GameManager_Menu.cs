@@ -14,6 +14,7 @@ public partial class GameManager
     {
         Parameters.fillEnergy = true;
         Parameters.startTimer = true;
+        // Parameters.playAR = false;
         
         SceneManager.LoadScene(UtilitiesSceneManager.GetScene(SelectScene.main_menu));
     }

@@ -50,8 +50,8 @@ public partial class ARManager : MonoBehaviour
         }
         else
         {
-            ARPlay.Instance.PlayGame();
             btnGenerate.gameObject.SetActive(false);
+            ARPlay.Instance.PlayGame();
         }
     }
 

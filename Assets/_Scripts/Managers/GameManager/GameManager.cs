@@ -18,7 +18,8 @@ public partial class GameManager : StaticInstance<GameManager>
 
     public GameObject gatePlayer;
     public GameObject gateEnemy;
-    
+    public GameObject battleField;
+
     [SerializeField] private GameObject objectUnit;
     public List<AttackerSoldier> listAttackerSoldiers;
     public List<DefenderSoldier> listDefenderSoldiers;
@@ -37,15 +38,34 @@ public partial class GameManager : StaticInstance<GameManager>
 
     private void Start()
     {
-        SetModePlayer(); // set mode player in game
+        // SetModePlayer(); // set mode player in game
 
-        PlayerClick(); // set controller condition onPlayer
-        EnemyClick(); // set acontroller condition onEnemy
+        // PlayerClick(); // set controller condition onPlayer
+        // EnemyClick(); // set acontroller condition onEnemy
 
-        Draw(); // set draw condition
-        RandomBall(); // random ball first time
+        // Draw(); // set draw condition
+        // RandomBall(); // random ball first time
 
-        setPlayerCondition(); // set subscribe from another class
+        // setPlayerCondition(); // set subscribe from another class
+    }
+
+    bool test = false;
+
+    private void Update()
+    {
+        if (Parameters.play && !test)
+        {
+            test = true;
+            SetModePlayer(); // set mode player in game
+
+            PlayerClick(); // set controller condition onPlayer
+            EnemyClick(); // set acontroller condition onEnemy
+
+            Draw(); // set draw condition
+            RandomBall(); // random ball first time
+
+            setPlayerCondition(); // set subscribe from another class
+        }
     }
 
     private void SetModePlayer()

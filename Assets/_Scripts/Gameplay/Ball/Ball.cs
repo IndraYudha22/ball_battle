@@ -4,11 +4,13 @@ using UnityEngine;
 
 public class Ball : MonoBehaviour
 {
-    private float ballSpeed = Parameters.ballSpeed;
+    private float ballSpeed = Parameters.BallSpeed;
     public AttackerSoldier passedTo;
 
     private void Update()
     {
+        ballSpeed = Parameters.BallSpeed;
+        
         if (transform.parent == null && passedTo != null)
         {
             Debug.Log("SET BALL");

@@ -28,6 +28,6 @@ public partial class GameManager
         Parameters.fillEnergy = true;
         Parameters.startTimer = true;
 
-        SceneManager.LoadScene(UtilitiesSceneManager.GetScene(SelectScene.gameplay));
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 }

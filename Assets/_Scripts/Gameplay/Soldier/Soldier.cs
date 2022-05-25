@@ -58,7 +58,7 @@ public class Soldier : MonoBehaviour
         {
             Vector3 targetDirection = transform.position - lastPosition;
             lastPosition = transform.position;
-            Vector3 newDirection = Vector3.RotateTowards(transform.forward, targetDirection, Parameters.returnSpeed, 0f);
+            Vector3 newDirection = Vector3.RotateTowards(transform.forward, targetDirection, Parameters.ReturnSpeed, 0f);
 
             transform.rotation = Quaternion.LookRotation(newDirection);
 
